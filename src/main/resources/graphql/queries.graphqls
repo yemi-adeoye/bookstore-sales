@@ -1,0 +1,35 @@
+type Book{
+    id: Int,
+    isbn: String,
+    published: String,
+    price: String,
+    author: Author
+}
+
+type Author {
+    id: Int,
+    firstName: String,
+    lastName: String,
+    email: String,
+    gender: String,
+    book: [Book]
+}
+
+input BookRequestDto {
+    authorId: Int,
+    isbn: String,
+    price: String,
+    published: String
+
+}
+
+
+type Query {
+    # returns the list of books for the given author id
+    getBooksByAuthorId(authorId: ID): [Book]
+    
+}
+
+type Mutation {
+    insertAuthor(bookRequestDto: BookRequestDto): Author
+}
